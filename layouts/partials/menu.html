@@ -56,7 +56,11 @@
           {{ if gt $k 0 }}
             <li class="dd-item {{ if eq $page.RelPermalink $p.Page.RelPermalink }}active{{ end }}" data-nav-id="{{ $p.Page.RelPermalink }}">
               <a href="{{ $p.Page.RelPermalink }}">
-                <span>{{ $p.Page.Title }}    {{ if $page.Site.Params.showVisitedLinks}}  <i class="fa fa-check read-icon">  {{ end }} </i></span>
+                <span>
+                  {{ if isset $p.Page.Params "icon" }}
+                    {{ printf $p.Page.Params.icon | safeHTML }}
+                  {{ end }}
+                  {{ $p.Page.Title }}    {{ if $page.Site.Params.showVisitedLinks}}  <i class="fa fa-check read-icon">  {{ end }} </i></span>
               </a>
             </li>
           {{ end }}
